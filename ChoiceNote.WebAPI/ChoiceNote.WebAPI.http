@@ -1,0 +1,6 @@
+@ChoiceNote.WebAPI_HostAddress = http://localhost:5017
+
+GET {{ChoiceNote.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
