@@ -1,17 +1,14 @@
 # ビルドステージ
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /source
 
 # csproj をコピーして restore
-COPY *.csproj .
+COPY . ./
 RUN dotnet restore
-
-# 残りのソースをコピーして publish
-COPY . .
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c release -o out
 
 # 実行ステージ
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
-WORKDIR /app
-COPY --from=build /app/out .
+FROM mcr.microsoft.com/dotnet/aspnet:9.0
+WORKDIR /source
+COPY --from=build /source/out .
 ENTRYPOINT ["dotnet", "ChoiceNote.WebAPI.dll"]
