@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ## コンテナ内の作業ディレクトリを指定
 WORKDIR /source
 ## Dockerfile 階層のファイル全て→作業ディレクトリにコピー
-COPY . .
+COPY . ./
 ## 依存関係の復元
 RUN dotnet restore
 ## out フォルダに release ビルドした DLL 等を出力
