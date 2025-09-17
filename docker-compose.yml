@@ -1,0 +1,29 @@
+services:
+  choice-note:
+    # Dockerfileからイメージをビルド
+    build: .
+    # Docker起動時に常に再起動するように設定
+    restart: always
+    container_name: choice-note
+    ports:
+      - 8080:8080
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=postgres;Username=postgres;Password=postgres
+    depends_on:
+      - db # dbサービスが起動してから起動するように設定
+  db:
+    # postgres https://hub.docker.com/_/postgres
+    image: postgres:17
+    restart: always
+    container_name: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - db-store:/var/lib/postgresql/data # ボリュームをマウント
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: choice_note # 初期データベース名
+volumes:
+  db-store: # db_storeという名前でボリュームを作成
