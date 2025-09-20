@@ -1,5 +1,5 @@
 using System;
-using ChoiceNote.WebAPI.Entities;
+using ChoiceNote.WebAPI.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChoiceNote.WebAPI.Data;

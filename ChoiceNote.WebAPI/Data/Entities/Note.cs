@@ -1,14 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ChoiceNote.WebAPI.Entities;
+namespace ChoiceNote.WebAPI.Data.Entities;
 
 [Table("Notes")]
 public class Note
 {
     [Key] // 主キー
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // 自動採番
-    public int ChoiceNoteId { get; set; }
+    public int NoteId { get; set; }
 
     [Required]
     public int UserId { get; set; }
