@@ -3,8 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChoiceNote.WebAPI.Data.Repositories;
 
-public class NoteRepository(
-    ChoiceNoteDbContext dbContext)
+public class NoteRepository(ChoiceNoteDbContext dbContext)
     : INoteRepository
 {
     private readonly ChoiceNoteDbContext _dbContext = dbContext
@@ -14,7 +13,6 @@ public class NoteRepository(
     /// すべての Note を取得する
     /// </summary>
     /// <returns>NoteModelリスト</returns>
-    /// <exception cref="NotImplementedException"></exception>
     public async Task<IEnumerable<NoteModel>> GetNotesAsync()
     {
         var entities = await _dbContext.Notes.ToListAsync();

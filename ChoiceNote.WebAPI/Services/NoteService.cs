@@ -23,7 +23,8 @@ public class NoteService(
             NoteId = model.NoteId,
             Title = model.Title,
             Content = model.Content,
-            CreatedAt = model.CreatedAt
+            CreatedAt = model.CreatedAt,
+            UpdatedAt = model.UpdatedAt
         });
     }
 

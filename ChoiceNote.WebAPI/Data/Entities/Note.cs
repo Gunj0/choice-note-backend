@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ChoiceNote.WebAPI.Data.Entities;
 
+// TODO: Postgresではクエリに大文字を使うときはダブルクォートで囲む必要があるため
+// テーブル名とカラム名は小文字に統一する
+
 [Table("Notes")]
 public class Note
 {

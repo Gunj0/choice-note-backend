@@ -1,9 +1,10 @@
 # Docker セットアップ
 
-## ローカル
+## Dockerfile 作成
 
-- Dockerfile 作成
-- docker build & run
+- [# Docker コンテナーで ASP.NET Core アプリを実行する](https://learn.microsoft.com/ja-jp/aspnet/core/host-and-deploy/docker/building-net-docker-images?view=aspnetcore-9.0)
+
+## docker build & run
 
 ```zsh
 # docker build . : 指定パスのDockerfileからDocker Image作成
@@ -23,13 +24,22 @@ choice-note-backend % docker run -d --rm -p 8888:8080 --name choice-note-backend
 % docker ps -a
 ```
 
-- 起動確認
-  - [localhost](http://localhost:8080/weatherforecast)
+## 起動確認
 
-## Render.com
+- [localhost](http://localhost:8080/weatherforecast)
 
-- Settings
-  - Region: Singapore
-  - Instance Type: Free(0.1CPU 512MB)
-  - Root Directory: (空欄)
-  - Dockerfile Path: ./Dockerfile
+## docker-compose 作成
+
+```yml
+services:
+  choice-note:
+    # Dockerfileからイメージをビルド
+    build: .
+    # Docker起動時に常に再起動するように設定
+    restart: always
+    container_name: choice-note
+    ports:
+      - 8080:8080
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+```

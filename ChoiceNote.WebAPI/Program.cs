@@ -20,6 +20,9 @@ builder.Services.AddDbContext<ChoiceNoteDbContext>(options =>
         })
 );
 
+// CORS ポリシーの設定
+// Next.jsのSSRからのリクエストにはCORS設定不要
+
 // コントローラの追加
 builder.Services.AddControllers();
 
